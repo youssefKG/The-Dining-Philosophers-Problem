@@ -120,11 +120,11 @@ void *philosophers_routine(void *args) {
   int *philo_num = (int *)args; // Extract philosopher number
 
   while (1) { // Infinite loop for the philosopher's lifecycle
-    sem_wait(&philosophers_sem); // Wait for a spot at the table
     if (philosopheres[*philo_num] == THINKING) {
       start_thinking(*philo_num); // Philosopher starts thinking
     }
 
+    sem_wait(&philosophers_sem); // Wait for a spot at the table
     update_philosophers_state(*philo_num, HUNGRY); // Philosopher gets hungry
     printf("Philosopher %d is hungry.\n", *philo_num);
 
